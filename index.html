@@ -19,7 +19,14 @@
       <style>
         /* Enhanced Colorful Styles */
         body {
-            background: linear-gradient(135deg, #fff0f5 0%, #e6e9f0 100%);
+            background: linear-gradient(-45deg, #fff0f5, #e3f2fd, #fce4ec, #f3e5f5);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         .title h1 {
             color: #d81b60;
@@ -92,6 +99,64 @@
             100% { transform: rotateX(0deg); opacity: 1; }
         }
 
+        /* Text & Element Animations */
+        .animate-text {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        .pop-in {
+            opacity: 0;
+            animation: popIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+        }
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+        .delay-5 { animation-delay: 1.0s; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        /* Floating decoration */
+        .top-right-decoration, .top-left-decoration {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Shimmer Text Effect */
+        .shimmer-text {
+            background: linear-gradient(90deg, #d81b60 0%, #ff80ab 50%, #d81b60 100%);
+            background-size: 200% auto;
+            color: #d81b60;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 3s linear infinite;
+            display: inline-block;
+        }
+        @keyframes shimmer { to { background-position: 200% center; } }
+
         /* Buttons */
         .venue {
             background: linear-gradient(to right, #ff416c, #ff4b2b);
@@ -105,6 +170,14 @@
         .venue:hover {
             transform: translateY(-3px);
         }
+        .pulse-btn {
+            animation: pulse-shadow 2s infinite;
+        }
+        @keyframes pulse-shadow {
+            0% { box-shadow: 0 0 0 0 rgba(255, 65, 108, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 65, 108, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 65, 108, 0); }
+        }
       </style>
    </head>
    <body>
@@ -116,11 +189,11 @@
         
        
         <div class="title">
-          <p><b>Marriage INVITATION</b></p>
-            <h1>Praneeth Kumar</h1>
-            <h2>&</h2>
-            <h1>Bhavya</h1>
-            <h3>Are getting Married</h3>
+          <p class="animate-text delay-1"><b class="shimmer-text">Marriage INVITATION</b></p>
+            <h1 class="pop-in delay-2">Praneeth Kumar</h1>
+            <h2 class="animate-text delay-3">&</h2>
+            <h1 class="pop-in delay-4">Bhavya</h1>
+            <h3 class="animate-text delay-5">Are getting Married</h3>
             <p>
                On <span class="date"> 19/02/2026 </span>, <br>
                Muhurtham: 11:33 PM <br>
@@ -187,7 +260,7 @@
          </div>
       </div>
 
-      <div class="actions">
+      <div class="actions reveal">
         
    
     <video class="tile__video" playsinline muted loop controlslist="nodownload" style="max-width: 100%; height: auto;">
@@ -198,29 +271,29 @@
       </div>
       <br>   
 
-      <div id="time"></div>
+      <div id="time" class="reveal"></div>
 
- <p class="happiness">Join us in our happiness!<br><a href="#" target="_blank" class="twitter"><i class="fa fa-twitter"></i></a></p>
+ <p class="happiness reveal">Join us in our happiness!<br><a href="#" target="_blank" class="twitter"><i class="fa fa-twitter"></i></a></p>
      
-      <div class="tile__img">
+      <div class="tile__img reveal">
          <img class="tile__img" src="./assets/img/ggg.gif" alt=""  />
        </div>
      
-      <p class="dance-med">
+      <p class="dance-med reveal">
          Reception & Lunch
       </p>
-      <p style="text-align: center; color: #564861; font-weight: bold;">
+      <p class="reveal" style="text-align: center; color: #564861; font-weight: bold;">
          On 20th Feb 2026
       </p>
-      <div class="actions">
+      <div class="actions reveal">
         
         <a href="./assets/img/My Invitation.jpeg" href="{{.}}" target="_blank">
-          <div class="venue">DOWNLOAD INVITATION CARD</div>
+          <div class="venue pulse-btn">DOWNLOAD INVITATION CARD</div>
         </a>
 
         
       </div>
-      <p class="footer">
+      <p class="footer reveal">
          Can't wait to celebrate auspicious moment of our family with you! <br>
          Ping me for queries: +91 9704159554
          <span> <a href="https://api.whatsapp.com/send?phone=9704159554&utm_source=Messaging&utm_medium=Whatsapp" target="_blank" class="social-icon" title="WhatsApp">
@@ -233,23 +306,23 @@
       </div>
       
 
-      <p>How do I get there?</p>
+      <p class="reveal">How do I get there?</p>
 
-      <div class="actions" style="flex-wrap: wrap; justify-content: center; gap: 10px;">
+      <div class="actions reveal" style="flex-wrap: wrap; justify-content: center; gap: 10px;">
         
         <a href="https://maps.app.goo.gl/hhzQyq2C9hATEEXFA" target="_blank">
-          <div class="venue">MARRIAGE VENUE</div>
+          <div class="venue pulse-btn">MARRIAGE VENUE</div>
         </a>
 
         <a href="https://maps.app.goo.gl/1ABsNsUWmSE9AnAK9" target="_blank">
-          <div class="venue">RECEPTION VENUE</div>
+          <div class="venue pulse-btn">RECEPTION VENUE</div>
         </a>
      
       </div>
        <br>   
       </div>
        
-              <div class="wrapper">
+              <div class="wrapper reveal">
                <section id="section1">
                 
                  <div class="item">
@@ -274,8 +347,8 @@
            </div>
          </div>
        
-       </div>    
-       <p class="footer">
+       </div>
+       <p class="footer reveal">
          I cordially invite you and your family to
          my Marriage.
          
