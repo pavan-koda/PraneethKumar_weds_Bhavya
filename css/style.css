@@ -31,6 +31,9 @@ img {
   .top-left-decoration {
     max-width: 30%;
   }
+  .title h1 {
+    font-size: 40px;
+  }
 }
 
 .top-right-decoration {
@@ -368,11 +371,18 @@ a {
     display: none;
   }
   .wrapper {
-    display: none;
+    display: block;
+    overflow-x: auto;
+  }
+
+  .wrapper section {
+    display: flex;
+    width: max-content;
   }
 
   .wrapper section .item {
-    max-width: 100%;
+    max-width: 80vw;
+    margin: 0 10px;
   }
 }
 
