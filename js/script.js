@@ -44,10 +44,10 @@ var x = setInterval(function () {
   if (!document.getElementById("timer-container")) {
     timeElement.innerHTML =
       "<div class='container' id='timer-container'>" +
-      "<div class='block'><div class='card days-card' id='days-val'>0</div><div class='label'>Days</div></div>" +
-      "<div class='block'><div class='card hours-card' id='hours-val'>0</div><div class='label'>Hours</div></div>" +
-      "<div class='block'><div class='card minutes-card' id='minutes-val'>0</div><div class='label'>Minutes</div></div>" +
-      "<div class='block'><div class='card seconds-card' id='seconds-val'>0</div><div class='label'>Seconds</div></div>" +
+      "<div class='block'><div class='card' id='days-val'>0</div><div class='label'>Days</div></div>" +
+      "<div class='block'><div class='card' id='hours-val'>0</div><div class='label'>Hours</div></div>" +
+      "<div class='block'><div class='card' id='minutes-val'>0</div><div class='label'>Minutes</div></div>" +
+      "<div class='block'><div class='card' id='seconds-val'>0</div><div class='label'>Seconds</div></div>" +
       "</div>";
   }
 
