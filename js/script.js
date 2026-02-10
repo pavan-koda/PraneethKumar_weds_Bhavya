@@ -38,19 +38,34 @@ var x = setInterval(function () {
   var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  document.getElementById("time").innerHTML =
-    "<div class='container'><div class='days block'>" +
-    days +
-    "<br>Days</div>" +
-    "<div class='hours block'>" +
-    hours +
-    "<br>Hours</div>" +
-    "<div class='minutes block'>" +
-    minutes +
-    "<br>Minutes</div>" +
-    "<div class='seconds block'>" +
-    seconds +
-    "<br>Seconds</div></div>";
+  var timeElement = document.getElementById("time");
+
+  // Initialize structure if it doesn't exist
+  if (!document.getElementById("timer-container")) {
+    timeElement.innerHTML =
+      "<div class='container' id='timer-container'>" +
+      "<div class='block'><div class='card days-card' id='days-val'>0</div><div class='label'>Days</div></div>" +
+      "<div class='block'><div class='card hours-card' id='hours-val'>0</div><div class='label'>Hours</div></div>" +
+      "<div class='block'><div class='card minutes-card' id='minutes-val'>0</div><div class='label'>Minutes</div></div>" +
+      "<div class='block'><div class='card seconds-card' id='seconds-val'>0</div><div class='label'>Seconds</div></div>" +
+      "</div>";
+  }
+
+  // Function to update value and trigger animation
+  function updateTime(id, value) {
+    var el = document.getElementById(id);
+    if (el && el.innerText != value) {
+      el.innerText = value;
+      el.classList.remove("flip-animate");
+      void el.offsetWidth; // Trigger reflow
+      el.classList.add("flip-animate");
+    }
+  }
+
+  updateTime("days-val", days);
+  updateTime("hours-val", hours);
+  updateTime("minutes-val", minutes);
+  updateTime("seconds-val", seconds);
 
   if (distance < 0) {
     clearInterval(x);

@@ -43,18 +43,54 @@
             margin-top: 10px;
         }
         .block {
-            padding: 15px;
-            border-radius: 12px;
-            min-width: 80px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            font-family: 'Arvo', serif;
-            line-height: 1.4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        .days.block { background: #ffcdd2; color: #b71c1c; }
-        .hours.block { background: #e1bee7; color: #4a148c; }
-        .minutes.block { background: #ffe0b2; color: #e65100; }
-        .seconds.block { background: #b3e5fc; color: #0d47a1; }
+        .card {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 36px;
+            font-weight: bold;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            font-family: 'Arvo', serif;
+        }
+        /* Split line effect */
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: rgba(0,0,0,0.1);
+        }
+        .label {
+            margin-top: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #555;
+            text-transform: uppercase;
+        }
+        
+        .days-card { background: #ffcdd2; color: #b71c1c; }
+        .hours-card { background: #e1bee7; color: #4a148c; }
+        .minutes-card { background: #ffe0b2; color: #e65100; }
+        .seconds-card { background: #b3e5fc; color: #0d47a1; }
+
+        /* Opening Animation */
+        .flip-animate {
+            animation: cardOpen 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        @keyframes cardOpen {
+            0% { transform: rotateX(-90deg); opacity: 0; }
+            100% { transform: rotateX(0deg); opacity: 1; }
+        }
 
         /* Buttons */
         .venue {
@@ -93,7 +129,7 @@
             <div class="body2">
             <svg width="50" height="50" viewBox="0 0 200 200">
                <g transform="translate(100 100)">
-                 <path transform="translate(-50 -50)" fill="#E91E63" d="M92.71,7.27L92.71,7.27c-9.71-9.69-25.46-9.69-35.18,0L50,14.79l-7.54-7.52C32.75-2.42,17-2.42,7.29,7.27v0 c-9.71,9.69-9.71,25.41,0,35.1L50,85l42.71-42.63C102.43,32.68,102.43,16.96,92.71,7.27z"></path>
+                 <path transform="translate(-50 -50)" fill="red" d="M92.71,7.27L92.71,7.27c-9.71-9.69-25.46-9.69-35.18,0L50,14.79l-7.54-7.52C32.75-2.42,17-2.42,7.29,7.27v0 c-9.71,9.69-9.71,25.41,0,35.1L50,85l42.71-42.63C102.43,32.68,102.43,16.96,92.71,7.27z"></path>
                  <animateTransform 
                      attributeName="transform" 
                      type="scale" 
@@ -107,7 +143,7 @@
 
            <svg width="50" height="50" viewBox="0 0 200 200">
             <g transform="translate(100 100)">
-              <path transform="translate(-50 -50)" fill="#9C27B0" d="M92.71,7.27L92.71,7.27c-9.71-9.69-25.46-9.69-35.18,0L50,14.79l-7.54-7.52C32.75-2.42,17-2.42,7.29,7.27v0 c-9.71,9.69-9.71,25.41,0,35.1L50,85l42.71-42.63C102.43,32.68,102.43,16.96,92.71,7.27z"></path>
+              <path transform="translate(-50 -50)" fill="red" d="M92.71,7.27L92.71,7.27c-9.71-9.69-25.46-9.69-35.18,0L50,14.79l-7.54-7.52C32.75-2.42,17-2.42,7.29,7.27v0 c-9.71,9.69-9.71,25.41,0,35.1L50,85l42.71-42.63C102.43,32.68,102.43,16.96,92.71,7.27z"></path>
               <animateTransform 
                   attributeName="transform" 
                   type="scale" 
@@ -121,7 +157,7 @@
 
         <svg width="50" height="50" viewBox="0 0 200 200">
          <g transform="translate(100 100)">
-           <path transform="translate(-50 -50)" fill="#FF9800" d="M92.71,7.27L92.71,7.27c-9.71-9.69-25.46-9.69-35.18,0L50,14.79l-7.54-7.52C32.75-2.42,17-2.42,7.29,7.27v0 c-9.71,9.69-9.71,25.41,0,35.1L50,85l42.71-42.63C102.43,32.68,102.43,16.96,92.71,7.27z"></path>
+           <path transform="translate(-50 -50)" fill="red" d="M92.71,7.27L92.71,7.27c-9.71-9.69-25.46-9.69-35.18,0L50,14.79l-7.54-7.52C32.75-2.42,17-2.42,7.29,7.27v0 c-9.71,9.69-9.71,25.41,0,35.1L50,85l42.71-42.63C102.43,32.68,102.43,16.96,92.71,7.27z"></path>
            <animateTransform 
                attributeName="transform" 
                type="scale" 
@@ -135,7 +171,7 @@
 
      <svg width="50" height="50" viewBox="0 0 200 200">
       <g transform="translate(100 100)">
-        <path transform="translate(-50 -50)" fill="#2196F3" d="M92.71,7.27L92.71,7.27c-9.71-9.69-25.46-9.69-35.18,0L50,14.79l-7.54-7.52C32.75-2.42,17-2.42,7.29,7.27v0 c-9.71,9.69-9.71,25.41,0,35.1L50,85l42.71-42.63C102.43,32.68,102.43,16.96,92.71,7.27z"></path>
+        <path transform="translate(-50 -50)" fill="red" d="M92.71,7.27L92.71,7.27c-9.71-9.69-25.46-9.69-35.18,0L50,14.79l-7.54-7.52C32.75-2.42,17-2.42,7.29,7.27v0 c-9.71,9.69-9.71,25.41,0,35.1L50,85l42.71-42.63C102.43,32.68,102.43,16.96,92.71,7.27z"></path>
         <animateTransform 
             attributeName="transform" 
             type="scale" 
